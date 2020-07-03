@@ -1,17 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
 import App from './App';
-import * as serviceWorker from './serviceWorker';
+import { BrowserRouter } from 'react-router-dom'
+
+
+//setupredux
+import {createStore} from 'redux'
+import {Provider} from 'react-redux' //Provider sebagai penghubung redux action dgn reducer, menghubungkan pake connect
+import Reducers from './reducers'
+
+//setelah diimport, harus dibuatkan variable sebagai penyimpan
+let globalStore = createStore(Reducers) //penyimpanan global
+globalStore.subscribe(() => console.log('global storage : ',  globalStore.getState()))
+
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  <Provider store={globalStore}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </Provider>
+  ,document.getElementById('root')
 );
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
