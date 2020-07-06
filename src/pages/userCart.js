@@ -7,15 +7,25 @@ import {
     TableBody,
     TableCell,
     TableRow,
+    TableFooter,
+    Typography,
     Button,
     Dialog,
     DialogActions,
     DialogContent,
     DialogTitle,
     DialogContentText,
-    TextField
+    TextField,
+    ListItemIcon,
+    IconButton,
+    Paper
 } from '@material-ui/core'
-
+import AddIcon from '@material-ui/icons/Add';
+import RemoveIcon from '@material-ui/icons/Remove';
+import CheckIcon from '@material-ui/icons/Check';
+import CancelIcon from '@material-ui/icons/Cancel';
+import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit';
 import { LogIn } from '../actions'
 
 class UserCart extends React.Component {
@@ -23,7 +33,9 @@ class UserCart extends React.Component {
         super(props)
         this.state = {
             alert : false,
-            passwordError : false
+            passwordError : false,
+            selectedId : null,
+            
         }
     } 
 
@@ -48,6 +60,13 @@ class UserCart extends React.Component {
         .catch(err => console.log(err))
     }
 
+    handleEdit = (index) => {
+        this.setState({
+
+            editrow: index, count: this.props.cart[index].qty
+        })
+    }
+
     handleCheckOut = () => {
         console.log('check out')
 
@@ -58,6 +77,45 @@ class UserCart extends React.Component {
 
     handleClose = () => {
         this.setState({alert : false})
+    }
+
+    handleSave = (index) => {
+        let tempCart = this.props.cart;
+        tempCart[index].qty = this.state.count;
+        tempCart[index].total = tempCart[index].price * tempCart[index].qty
+        Axios.patch(`http://localhost:2000/users/${this.props.id}`, {
+            cart: tempCart
+        })
+        .then ((res) => {
+            Axios.get(`http://localhost:2000/users/${this.props.id}`).then(
+            (res) => {
+                this.props.LogIn(res.data);
+                this.setState({editrow: null})
+            }
+            )
+        })
+        .catch ((err) => {
+            console.log(err)
+        })
+    }
+
+    handleCancel = (index) => {
+        this.setState({editrow: null})
+    }
+
+    tambah = (index) => {
+        let countEdit = this.state.count
+        countEdit++
+        this.setState({ count: countEdit})
+    }
+    kurang = (index) => {
+        let countEdit = this.state.count
+        countEdit--
+        this.setState ({ count: countEdit})
+        if(countEdit === 0) {
+            this.delete(index);
+            this.setState ({ editrow: null })
+        }
     }
 
     handleOk = () => {
@@ -73,12 +131,12 @@ class UserCart extends React.Component {
 
         if (tempPass === this.props.password) {
             // update database
-            Axios.post('http://localhost:2000/transaction_history', history)
+            Axios.post('http://localhost:2000/transaction_history', history) //history untuk ngepost ke history
             .then(res => {
                 console.log(res.data)
                 this.setState({alert : false})
                 // update cart user => []
-                Axios.patch(`http://localhost:2000/users/${this.props.id}`, { cart : [] })
+                Axios.patch(`http://localhost:2000/users/${this.props.id}`, { cart : [] }) //untuk ngosongin cartnya lagi
                 .then(res => {
                     console.log(res.data)
     
@@ -100,6 +158,7 @@ class UserCart extends React.Component {
             <TableHead>
                 <TableRow>
                     <TableCell>No</TableCell>
+                    <TableCell>Image</TableCell>
                     <TableCell>Name</TableCell>
                     <TableCell>Brand</TableCell>
                     <TableCell>Color</TableCell>
@@ -117,22 +176,77 @@ class UserCart extends React.Component {
             return (
                 <TableRow key={index}>
                     <TableCell>{index + 1}</TableCell>
+                    <TableCell><img src={item.images} width='70px'/></TableCell>
                     <TableCell>{item.name}</TableCell>
                     <TableCell>{item.brand}</TableCell>
                     <TableCell>{item.color}</TableCell>
                     <TableCell>{item.size}</TableCell>
-                    <TableCell>{item.qty}</TableCell>
-                    <TableCell>{item.total}</TableCell>
+                    {/* <TableCell>{item.qty}</TableCell> */}
                     <TableCell>
-                        <Button 
-                            color="secondary" 
-                            variant="contained"
-                            onClick={() => this.handleDelete(index)}
-                        >Delete</Button>
+                        {index === this.state.editrow? (
+                            <div style={{display: "flex"}}>
+                            <IconButton onClick={() => this.kurang(index)}>
+                                <RemoveIcon />
+                            </IconButton>
+                            <Typography>{this.state.count}</Typography>
+                            <IconButton onClick={() => this.tambah(index)}>
+                                <AddIcon />
+                            </IconButton>
+                            </div>
+                        ) : (
+                            <div>{item.qty}</div>
+                        )}
+                    </TableCell>
+                    {/* <TableCell>Rp. {item.total.toLocaleString()}</TableCell> */}
+                    <TableCell>
+                            <div>
+                                <IconButton onClick={ () => this.handleSave(index)}>
+                                    <CheckIcon />
+                                </IconButton>
+                                <IconButton onClick={ () => this.handleCancel(index)}>
+                                    <CancelIcon />
+                                </IconButton>
+                            </div>
+                        ) : (
+                            <div>
+                            <IconButton onClick={ () => this.handleDelete(index)}>
+                                <DeleteIcon />
+                            </IconButton>
+                            <IconButton onClick={ () => this.handleEdit(index)}>
+                                <EditIcon />
+                            </IconButton>
+                            </div>
+                        )}
+                    </TableCell>
+                    <TableCell>
                     </TableCell>
                 </TableRow>
             )
         })
+    }
+
+    renderTableFooter = () => {
+        let count = 0
+        this.props.cart.map((item, index) => {
+            count += item.total
+        })
+
+        return (
+            <TableRow>
+                <TableCell colSpan={6}></TableCell>
+                <TableCell><Typography style={{ color: 'green' }}>Total Payment</Typography></TableCell>
+                <TableCell><Typography style={{ color: 'green' }}> Rp. {count.toLocaleString()}</Typography></TableCell>
+                {/* <TableCell>
+                    <Button 
+                        variant="contained" 
+                        style={styles.buttonCheckOut}
+                        onClick={this.handleCheckOut}
+                    >
+                        Check Out
+                    </Button>
+                </TableCell> */}
+            </TableRow>
+        )
     }
 
     render () {
@@ -144,6 +258,7 @@ class UserCart extends React.Component {
                 <Table>
                     {this.renderTableHead()}
                     <TableBody>{this.renderTableBody()}</TableBody>
+                    <TableFooter style={styles.tfoot}>{this.renderTableFooter()}</TableFooter>
                 </Table>
                 <Button 
                     variant="contained" 

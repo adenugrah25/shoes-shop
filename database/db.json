@@ -522,7 +522,16 @@
       "password": "user",
       "role": "user",
       "email": "user@gmail.com",
-      "cart": []
+      "cart": [
+        {
+          "name": "VANS UA CLASSIC SLIP-ON (BREAST CANCER)",
+          "images": "https://kickz.akamaized.net/en/media/images/p/1200/vans-UA_Classic_Slip_On_Breast_Cancer-Breast_Cancer_nude_check_true_white-1.jpg",
+          "brand": "VANS",
+          "color": "cadmium yellow/tidepool",
+          "size": 40,
+          "total": null
+        }
+      ]
     },
     {
       "username": "Adee25",
@@ -536,147 +545,71 @@
   "transaction_history": [
     {
       "userID": 3,
-      "date": "7/2/2020, 12:15:57 AM",
-      "total": 1500000,
+      "date": "7/4/2020, 1:02:42 AM",
+      "total": 2500000,
       "products": [
         {
-          "name": "JORDAN WESTBROOK ONE TAKE",
-          "brand": "JORDAN",
-          "color": "WHITE/WHITE-BLACK-RAGE GREEN",
-          "size": 38,
+          "name": "NIKE AIR ZOOM-TYPE",
+          "images": "https://kickz.akamaized.net/en/media/images/p/1200/nike-AIR_ZOOM_TYPE-BLACK_SUMMIT_WHITE_MENTA_ORANGE_TRANCE-1.jpg",
+          "brand": "NIKE",
+          "color": "BLACK/SUMMIT WHITE-MENTA-ORANGE TRANCE",
+          "size": 40,
           "qty": 1,
-          "total": 1500000
+          "total": 2500000
         }
       ],
       "id": 1
     },
     {
       "userID": 3,
-      "date": "7/2/2020, 12:17:08 AM",
-      "total": 1500000,
+      "date": "7/6/2020, 3:55:21 PM",
+      "total": 2680000,
       "products": [
         {
-          "name": "JORDAN WESTBROOK ONE TAKE",
+          "name": "JORDAN AIR JORDAN 14 RETRO",
+          "images": "https://kickz.akamaized.net/en/media/images/p/1200/Air_Jordan_14_Retro-BLACK_GYM_RED_WHITE_OFF_WHITE-1.jpg",
           "brand": "JORDAN",
-          "color": "WHITE/WHITE-BLACK-RAGE GREEN",
-          "size": 38,
+          "color": "BLACK/GYM RED-WHITE-OFF WHITE",
+          "size": 40,
           "qty": 1,
-          "total": 1500000
+          "total": 2680000
         }
       ],
       "id": 2
     },
     {
-      "userID": 3,
-      "date": "7/2/2020, 12:26:33 AM",
-      "total": 879650,
+      "userID": 2,
+      "date": "7/6/2020, 3:55:48 PM",
+      "total": 1500000,
       "products": [
         {
-          "name": "NIKE WMNS NIKE AIR MAX 90 SLIDE",
-          "brand": "NIKE",
-          "color": "WHITE/SMOKE GREY-ROSE-LT SMOKE GREY",
-          "size": 39,
+          "name": "JORDAN WESTBROOK ONE TAKE",
+          "images": "https://kickz.akamaized.net/en/media/images/p/1200/JORDAN_WESTBROOK_ONE_TAKE-WHITE_WHITE_BLACK_RAGE_GREEN-1.jpg",
+          "brand": "JORDAN",
+          "color": "WHITE/WHITE-BLACK-RAGE GREEN",
+          "size": 41,
           "qty": 1,
-          "total": 879650
+          "total": 1500000
         }
       ],
       "id": 3
     },
     {
-      "userID": 3,
-      "date": "7/2/2020, 12:27:35 AM",
-      "total": 2345000,
+      "userID": 2,
+      "date": "7/6/2020, 3:56:14 PM",
+      "total": 678956,
       "products": [
         {
-          "name": "NIKE W NIKE REACT ELEMENT 55",
-          "brand": "NIKE",
-          "color": "WHITE/FIRE PINK-SAPPHIRE-BARELY VOLT",
+          "name": "VANS UA ERA (MIX & MATCH)",
+          "images": "https://kickz.akamaized.net/en/media/images/p/1200/vans-UA_Era_Mix__Match-cadmium_yellow_tidepool-1.jpg",
+          "brand": "VANS",
+          "color": "cadmium yellow/tidepool",
           "size": 39,
           "qty": 1,
-          "total": 2345000
+          "total": 678956
         }
       ],
       "id": 4
-    },
-    {
-      "userID": 3,
-      "date": "7/2/2020, 12:29:55 AM",
-      "total": 2345000,
-      "products": [
-        {
-          "name": "NIKE W NIKE REACT ELEMENT 55",
-          "brand": "NIKE",
-          "color": "WHITE/FIRE PINK-SAPPHIRE-BARELY VOLT",
-          "size": 39,
-          "qty": 1,
-          "total": 2345000
-        }
-      ],
-      "id": 5
-    },
-    {
-      "userID": 3,
-      "date": "7/2/2020, 12:32:52 AM",
-      "total": 2500000,
-      "products": [
-        {
-          "name": "NIKE AIR ZOOM-TYPE",
-          "brand": "NIKE",
-          "color": "BLACK/SUMMIT WHITE-MENTA-ORANGE TRANCE",
-          "size": 38,
-          "qty": 1,
-          "total": 2500000
-        }
-      ],
-      "id": 6
-    },
-    {
-      "userID": 3,
-      "date": "7/2/2020, 12:44:35 AM",
-      "total": 1780000,
-      "products": [
-        {
-          "name": "NIKE KYRIE 6",
-          "brand": "NIKE",
-          "color": "WHITE/BLUE FURY-OPTI YELLOW-DIGITAL PINK",
-          "size": 42,
-          "qty": 1,
-          "total": 1780000
-        }
-      ],
-      "id": 7
-    },
-    {
-      "userID": 3,
-      "date": "7/2/2020, 9:23:04 AM",
-      "total": 1500000,
-      "products": [
-        {
-          "name": "JORDAN WESTBROOK ONE TAKE",
-          "brand": "JORDAN",
-          "color": "WHITE/WHITE-BLACK-RAGE GREEN",
-          "size": 39,
-          "qty": 1,
-          "total": 1500000
-        }
-      ],
-      "id": 8
-    },
-    {
-      "userID": 2,
-      "date": "7/2/2020, 4:37:25 PM",
-      "total": 1500000,
-      "products": [
-        {
-          "name": "JORDAN WESTBROOK ONE TAKE",
-          "brand": "JORDAN",
-          "color": "WHITE/WHITE-BLACK-RAGE GREEN",
-          "size": 39,
-          "qty": 1,
-          "total": 1500000
-        }
-      ],
-      "id": 9
     }
   ]
 }

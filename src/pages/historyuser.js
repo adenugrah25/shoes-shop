@@ -28,6 +28,7 @@ class HistoryUser extends React.Component {
         return (
             <TableRow>
                 <TableCell>No</TableCell>
+                <TableCell>Image</TableCell>
                 {/* <TableCell>Users ID</TableCell> */}
                 <TableCell>Date Trans.</TableCell>
                 <TableCell>Total</TableCell>
@@ -42,6 +43,7 @@ class HistoryUser extends React.Component {
                 <TableRow key={index}>
                     <TableCell>{index + 1}</TableCell>
                     {/* <TableCell>{item.userID}</TableCell> */}
+                    <TableCell>{item.images}</TableCell>
                     <TableCell>{item.date}</TableCell>
                     <TableCell>{item.total}</TableCell>
                     <TableCell>

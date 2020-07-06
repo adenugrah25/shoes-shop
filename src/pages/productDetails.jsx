@@ -78,6 +78,7 @@ class ProductDetails extends React.Component {
       console.log("user already login");
       let cartData = {
         name: product.name,
+        images: product.images[0],
         brand: product.brand,
         color: product.colour,
         size: size,
